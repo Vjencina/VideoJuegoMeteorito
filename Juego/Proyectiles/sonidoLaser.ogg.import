@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/sonidoLaser.ogg-95b3f2b4e2d10db1f9e3784b70d97625.oggstr"
+
+[deps]
+
+source_file="res://Juego/Proyectiles/sonidoLaser.ogg"
+dest_files=[ "res://.import/sonidoLaser.ogg-95b3f2b4e2d10db1f9e3784b70d97625.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0
