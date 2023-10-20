@@ -1,7 +1,8 @@
-class_name ProyectilPlayer
+class_name ProyectilEnemigo
 extends Area2D
 
-## Atributos
+
+ ##Atributos
 var velocidad: Vector2 = Vector2.ZERO
 var danio:float
 
