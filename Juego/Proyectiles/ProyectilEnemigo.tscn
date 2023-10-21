@@ -8,6 +8,8 @@ radius = 6.52766
 height = 28.3768
 
 [node name="ProyectilEnemigo" type="Area2D"]
+z_index = 39
+z_as_relative = false
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
