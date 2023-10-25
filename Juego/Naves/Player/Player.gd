@@ -3,7 +3,6 @@ extends RigidBody2D
 
 ##ENUMS
 enum ESTADO{SPAWN, VIVO, INVENCIBLE, MUERTO}
-
 ##Atributos Export
 export var potencia_motor :int = 20
 export var potencia_rotacion:int = 280
@@ -20,10 +19,11 @@ onready var laser : RayoLaser = $LaserBeam2D
 onready var estela: Estela = $EstelaPuntoInicio/Trail2D
 onready var motor_sfx:Motor =$MotorSFX
 onready var colisionador:CollisionShape2D = $CollisionShape2D
+
 ##Metodos
-#func _ready() -> void:
-	##controlador_estados(estado_actual)
-	##controlador_estados(ESTADO.VIVO)
+func _ready() -> void:
+	controlador_estados(estado_actual)
+	controlador_estados(ESTADO.VIVO)
 
 
 func _integrate_forces(state: Physics2DDirectBodyState) -> void:
@@ -61,6 +61,7 @@ func controlador_estados(nuevo_estado: int) -> void:
 		ESTADO.MUERTO:
 			colisionador.set_deferred("disable", true)
 			canion.set_puede_disparar(true)
+			Eventos.emit_signal("nave_destruida", global_position, 2)
 			queue_free()
 		_:
 			printerr("Error de estado")
@@ -70,6 +71,11 @@ func esta_input_activo()-> bool:
 	if estado_actual in [ESTADO.MUERTO, ESTADO.SPAWN]:
 		return false
 	return true
+
+func destruir() -> void:
+	controlador_estados(ESTADO.MUERTO)
+
+
 
 func player_input() -> void:
 	if not esta_input_activo():
